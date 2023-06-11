@@ -41,18 +41,19 @@ DEVELOPED BY : MIDHUN AZHAHU RAJA P
 REG NO : 212222240066
 
 import socket
+from datetime import datetime
 s=socket.socket()
 s.bind(('localhost',8000))
 s.listen(5)
 c,addr=s.accept()
-address={"165.165.80.80":"6A:08:AA:C2","165.165.79.1":"8A:BC:E3:FA"};
-while True:
- ip=c.recv(1024).decode()
- try:
- c.send(address[ip].encode())
- except KeyError:
- c.send("Not Found".encode()) 
-````
+print("Client Address : ",addr)
+now = datetime.now()
+c.send(now.strftime("%d/%m/%Y %H:%M:%S").encode())
+ack=c.recv(1024).decode()
+if ack:
+    print(ack)
+c.close()
+```
 ### SERVER :
 ```
 import socket
@@ -65,14 +66,8 @@ s.send("acknowledgement recived from the server".encode())
 
 ## OUTPUT:
 
-## CLIENT :
 
-![EX1C](https://github.com/MidhunArPrabhu/19CS406-EX-1/assets/118054670/39036247-f214-4cf9-9ce8-cc000ada33ba)
-
-## SERVER :
-
-![EX1S](https://github.com/MidhunArPrabhu/19CS406-EX-1/assets/118054670/c47d144a-0ed5-428d-86bb-c23bf31ac024)
-
+![EX1C](https://github.com/MidhunArPrabhu/19CS406-EX-1/assets/118054670/6305c2ad-af81-4987-8b2a-c1fb51996293)
 
 ## RESULT:
 
