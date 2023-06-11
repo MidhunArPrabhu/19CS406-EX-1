@@ -1,6 +1,8 @@
 # 19CS406-EX-1 STUDY OF SOCKET PROGRAMMING WITH CLIENT-SERVER MODEL
 
-## DATE :
+## DATE : 09-03-2023
+
+
 
 ## AIM :
 To implement socket programming date and time display from client to server using TCPSockets
